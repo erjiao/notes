@@ -1,0 +1,73 @@
+一、windows 下安装和使用
+  1. 下载redis 程序软件
+      redisbin32.rar, redisbin64.rar
+      
+  2. 不需要安装, 解压后直接使用
+  
+  3. 启动redis 服务
+     cmd 进入redisbin32 根目录, 键入如下命令
+     redis-server.exe redis.conf
+     
+     使用 netstat -amb | more, 若看到6379 端口(默认)在监听, 说明启动成功
+     
+  4. 连接到redis进行操作
+     cmd>{%redis%}/redis-cli.exe -h ip地址 -p 端口号
+     
+     ip 默认为本地 端口号默认为 6379
+     cmd>{%redis%}/redic-cli.exe
+     
+     出现 redis 127.0.0.1:6379 >    表示连接成功
+     
+     
+二、linux CentOS 7 下安装 redis, 需要先安装 apache Http server
+   1. 安装编译器
+	   yum install gcc -y
+	   yum install gcc-c++ -y
+	   
+	   查看是否安装成功
+	   gcc -v
+	   
+	   检测LAMJ 环境  L: linux A: apache M:mysql J:java
+	   rpm -qa | grep httpd
+	   rpm -qa | grep mysql
+	   rpm -qa | grep java
+	   
+	   卸载
+	   rpm -e mysql*** --nodeps
+   
+  2. 下载安装包, 并放到 /usr/src 目录下
+     apr-1.5.2.tar.gz
+     apr-util-1.5.4.tar.gz
+     pcre-8.37.tar.gz
+     httpd-2.4.23.tar.gz
+  
+  具体可查看 https://segmentfault.com/a/1190000004236397?_ea=539001
+  
+  3. 解压 redis
+     tar -zvxf redis-3.2.1.tar.gz
+     
+  4. 进入 redis-3.2.1, 编译
+     make
+  
+  5. 将redis-3.2.1/redis.conf 以及redis-3.2.1/src 目录下的 redis-* 的亮绿色文件 复制到 /usr/local/redis
+     mkdir /usr/local/redis
+     cp redis-* /usr/local/redis
+     cp redis.conf /usr/local/redis
+     
+  6. 进入 /usr/local/redis/ 下, 启动服务端
+     ./redis-server redis.conf
+     
+     默认是前端启动, 占用你的控制台, 我们可以修改 redis.conf 文件中相关参数为后台运行
+     将 daemonize no  修改为 daemonize yes
+     
+  7. 启动客户端
+     ./redis-cli -h ip地址 -p 端口
+     
+  8. redis 服务开启远程连接
+     修改 redis.conf
+     将 bind 127.0.0.1 注释掉
+     
+  
+     
+   
+   

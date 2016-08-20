@@ -1,0 +1,48 @@
+一、string
+set: 增加, 修改(覆盖)   eg. set name liukai
+get: 获取    eg. get name
+del: 删除  返回值: 被删除key的数量  eg. del name
+keys: 查看所有keys    eg.  keys *
+expire: 设置或修改有效时间  eg. expire name 10  (seconds)
+ttl: 返回某个 key-value 的有效时间
+
+二、list 数据结构表现为栈或者队列, 值可重复
+LPUSH:  将值value插入到列表key的头部, 返回值: 执行LPUSH后, 列表长度  eg. LPUSH ticketline "tom" "andy" "lucy"
+RPUSH:  将值value插入到列表key的尾部  eg. RPUSH ticketline "andy"
+LRANGE: 获取列表key中指定区间的元素  eg. LRANGE ticketline 0 -1   (-1 表示从右边数第一个)
+LPOP: 移除并返回列表key的头元素   eg. LPOP ticketline
+RPOP: 移除并返回列表key的尾元素   eg. RPOP ticketline
+LLEN: 返回列表key的长度    eg.LLEN ticketline
+LREM: 根据参数count的值, 移除列表中与参数value相等的元素, 返回值: 被移除元素的数量  eg.LREM ticketline 0 tom
+      count > 0 : 从表头->表尾搜索, 移除count个value元素
+      count < 0 : 从表尾->表头搜索, 移除count个value元素
+      count = 0 : 移除所有value元素
+LINDEX 执行返回下标为index的元素
+
+三、set 元素不可重复, 无序
+SADD: 向集合中添加元素  eg. SADD member "e" "b" "c"
+SREM: 移除集合中的某个元素  eg. SREM member "e"
+SMEMBERS: 获取集合中的所有元素
+SMOVE: 将集合元素从source集合移动到destination集合  eg. SMOVE team team2 "a"
+
+四、Sorted Set, 有序
+ZADD:
+
+五、hash
+HSET: 添加元素   eg. HSET user:100 name "liukai"
+                     HSET user:100 age 23
+                     HSET user:100 sex "man"
+HGET: 获取元素   eg. HGET user:100 name
+HDEL: 删除元素   eg. HDEL user:100 name
+HKEYS: 获取所有的key  eg.HKEYS user:100
+HVALS: 获取所有的val  eg.HVALS user:100
+
+
+redis 事务
+MULTI: 标记事务开始
+EXEC: 执行事务
+
+
+redis 订阅和发布
+publish channle  发布信息
+subscribe channle [channle2...]   订阅频道

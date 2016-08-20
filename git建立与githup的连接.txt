@@ -1,0 +1,50 @@
+1. 下载 git
+
+2. 全局配置, 如下
+   git config --global user.name "erjiao"
+   git config --global user.email 396327620@qq.com
+   
+   第一次使用git push时，会提示设置git config --global push.default 将其设置为simple就行了，如下：
+   git config --global push.default simple  //你可以直接如此设置，不必等操作遇到才设置
+   
+3. 使用ssh加密实现与github网站的关联，避免每次同步都需要填写帐户密码，首次产生一个ssh key
+	 ssh-keygen -C '396327620@qq.com' -t rsa
+	 复制 .ssh/id_rsa.pub 中的内容到 github网站setting Add SSH Keys 中
+	 如此即关联完毕，如此在之后与github网站的push、pull操作则不用再输入github帐户密码了。
+	 
+4. 新建本地仓库文件夹 D:\git_repertory
+   进入当前文件夹
+   git clone git@github.com:erjiao/9264336.git
+
+5. 将要上传的项目拷贝到 9264336 仓库下, 执行如下命令
+   git add . //选择要添加进仓库的文件
+   git commit -m "上传" //添加进入仓库, -m后面跟一个参数，表示说明，将代码提交到GitHub后，将会在代码文件信息上显示这个说明
+   
+6. 将本地仓库的文件上传到github
+   git remote add origin git@github.com:erjiao/9264336.git
+   git push -u origin master
+   
+   若提示 fatal: remote origin already exists.
+   则先执行 git remote rm origin 再执行 git remote add origin git@github.com:erjiao/9264336.git
+   
+7. 删除本地仓库文件. 先将本地要删除的文件删除后执行如下命令
+   git add .
+   git commit -m "删除"
+   git push -u origin master
+   
+8. 恢复本地删除的文件
+   git checkout 文件名
+
+9. 撤销提交的文件
+   git reset -soft :取消了commit  
+	 git reset -mixed（默认） :取消了commit ，取消了add
+   git reset -hard :取消了commit ，取消了add，取消源文件修改
+  
+10. 撤回add 的文件
+    git reset .
+   
+   
+   
+   
+   
+   

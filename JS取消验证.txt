@@ -1,0 +1,1 @@
+Window->Preferences->Myeclipse->validation 下 将 Client-side JavaScript Validator 和 JavaScript validator for JS files 前面的勾去掉。

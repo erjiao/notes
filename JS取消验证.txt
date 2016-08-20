@@ -1,1 +1,1 @@
-Window->Preferences->Myeclipse->validation ÏÂ ½« Client-side JavaScript Validator ºÍ JavaScript validator for JS files Ç°ÃæµÄ¹´È¥µô¡£
+Window->Preferences->Myeclipse->validation ä¸‹å°† Client-side JavaScript Validator å’Œ JavaScript validator for JS files å‰é¢çš„å‹¾å»æ‰ã€‚
